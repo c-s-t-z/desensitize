@@ -33,6 +33,11 @@ public class DesensitizeConfig {
     private static Set<String> includePackages;
     private static boolean enableDesensitize;
 
+    /**
+     * 如果字段值是null 是否会调用自定义函数
+     */
+    private static boolean isCustomHandlerNullValue;
+
     public static Set<String> getIncludePackages() {
         loadConfigComplete();
         return includePackages;
@@ -41,6 +46,11 @@ public class DesensitizeConfig {
     public static boolean getEnableDesensitize() {
         loadConfigComplete();
         return enableDesensitize;
+    }
+
+    public static boolean getIsCustomHandlerNullValue() {
+        loadConfigComplete();
+        return isCustomHandlerNullValue;
     }
 
     public static void loadConfig() {
@@ -52,9 +62,12 @@ public class DesensitizeConfig {
             throw new RuntimeException(e);
         }
         String propertyValue = properties.getProperty("desensitize.logback.info.include-packages");
+        String isCustomHandlerNull = properties.getProperty("desensitize.logback.info.handler-null-value");
         String enable = properties.getProperty("desensitize.logback.enable");
-        includePackages = Arrays.stream(StringUtils.split(propertyValue, ",")).map(StringUtils::trim).collect(Collectors.toSet());
+        includePackages = StringUtils.isBlank(propertyValue) ? new HashSet<>(0) :
+                Arrays.stream(StringUtils.split(propertyValue, ",")).map(StringUtils::trim).collect(Collectors.toSet());
         enableDesensitize = Boolean.parseBoolean(enable);
+        isCustomHandlerNullValue = Boolean.parseBoolean(isCustomHandlerNull);
     }
 
     private static boolean loadConfigComplete() {

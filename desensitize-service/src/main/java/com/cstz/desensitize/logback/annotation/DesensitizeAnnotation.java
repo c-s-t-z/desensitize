@@ -1,5 +1,6 @@
 package com.cstz.desensitize.logback.annotation;
 
+import com.cstz.desensitize.logback.constant.CommonConstant;
 import com.cstz.desensitize.logback.enums.DesensitizeTypeEnum;
 
 import java.lang.annotation.ElementType;
@@ -40,12 +41,13 @@ public @interface DesensitizeAnnotation {
 
     /**
      * 如果自定义类型 那么以下属性失效 需要自定义处理
+     *
      * @return
      */
-    int retentionPrefixLength() default 2;
+    int retentionPrefixLength() default CommonConstant.NumberConstant.RETENTION_PREFIX_LENGTH;
 
-    int retentionSuffixLength() default 3;
+    int retentionSuffixLength() default CommonConstant.NumberConstant.RETENTION_SUFFIX_LENGTH;
 
-    int midAsteriskLength() default 4;
+    int midAsteriskLength() default CommonConstant.NumberConstant.MID_ASTERISK_LENGTH;
 
 }
