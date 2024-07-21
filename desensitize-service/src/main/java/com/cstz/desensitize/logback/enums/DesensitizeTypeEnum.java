@@ -36,6 +36,10 @@ public enum DesensitizeTypeEnum {
 
     NAME(1, "姓名", DefaultDesensitizeFunction.desensitizeNameFunction()),
     MAIL(2, "邮箱", DefaultDesensitizeFunction.desensitizeMailFunction()),
+
+    MOBILE_PHONE(3, "手机", DefaultDesensitizeFunction.desensitizeMobilePhoneFunction()),
+
+    FIXED_TELEPHONE(4, "固话", DefaultDesensitizeFunction.desensitizeFixedPhoneFunction()),
     /**
      * 字段显示为****
      */

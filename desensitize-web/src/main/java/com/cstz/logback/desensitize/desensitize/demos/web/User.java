@@ -17,7 +17,6 @@
 package com.cstz.logback.desensitize.desensitize.demos.web;
 
 import com.cstz.desensitize.logback.annotation.DesensitizeAnnotation;
-import com.cstz.desensitize.logback.config.TestConf;
 import com.cstz.desensitize.logback.enums.DesensitizeTypeEnum;
 import lombok.Data;
 
@@ -37,8 +36,6 @@ public class User {
     @DesensitizeAnnotation(desensitizeType = DesensitizeTypeEnum.OBJECT_DESENSITIZE)
     private User userInner;
 
-    @DesensitizeAnnotation(desensitizeType = DesensitizeTypeEnum.OBJECT_DESENSITIZE)
-    private TestConf testConf;
     @DesensitizeAnnotation(desensitizeType = DesensitizeTypeEnum.CUSTOM, desensitizeHandlerClass = CustomDesensitizeHandler.class, desensitizeHandler = "handlerNameCustom")
     private String cString;
 }

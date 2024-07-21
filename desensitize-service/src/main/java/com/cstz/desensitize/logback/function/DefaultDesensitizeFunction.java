@@ -34,14 +34,21 @@ public class DefaultDesensitizeFunction {
         return desensitizeCommonFunction();
     }
 
+    public static TypeEnumFunction desensitizeMobilePhoneFunction() {
+        return desensitizeCommonFunction();
+    }
+
+    public static TypeEnumFunction desensitizeFixedPhoneFunction() {
+        return desensitizeCommonFunction();
+    }
+
     public static TypeEnumFunction objectEmptyFunction() {
         return (f, o, m, l) -> {
             Object innerObj = f.get(o);
             if (l.add(innerObj.hashCode())) {
                 Map<String, Object> desensitizeMap = new HashMap<>();
                 Field[] fields = innerObj.getClass().getDeclaredFields();
-                for (int j = 0, fLen = fields.length; j < fLen; j++) {
-                    Field field = fields[j];
+                for (Field field : fields) {
                     DesensitizeUtil.handler(field, desensitizeMap, innerObj, l);
                 }
                 TryCatchExceptionFunction.handler(f, () -> m.put(f.getName(), desensitizeMap));
