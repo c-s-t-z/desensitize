@@ -40,17 +40,22 @@ public enum DesensitizeTypeEnum {
     MOBILE_PHONE(3, "手机", DefaultDesensitizeFunction.desensitizeMobilePhoneFunction()),
 
     FIXED_TELEPHONE(4, "固话", DefaultDesensitizeFunction.desensitizeFixedPhoneFunction()),
+    IDENTITY_CARD(5, "身份证", DefaultDesensitizeFunction.desensitizeIdentityCardFunction()),
+    BANK_CARD_ACCOUNT(6, "银行卡", DefaultDesensitizeFunction.desensitizeBankCardAccountFunction()),
+    PASSPORT(7, "护照", DefaultDesensitizeFunction.desensitizePassportFunction()),
+    OTHER_INFORMATION(100, "其他", DefaultDesensitizeFunction.desensitizeOtherFunction()),
+
     /**
      * 字段显示为****
      */
     OBJECT_DESENSITIZE(-1, "对象脱敏", DefaultDesensitizeFunction.objectEmptyFunction()),
     UN_DESENSITIZE(-2, "不脱敏", DefaultDesensitizeFunction.unDesensitizeFunction()),
     ;
-    private int code;
+    private final int code;
 
-    private String desc;
+    private final String desc;
 
-    private TypeEnumFunction function;
+    private final TypeEnumFunction function;
 
     DesensitizeTypeEnum(int code, String desc, TypeEnumFunction function) {
         this.code = code;

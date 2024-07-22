@@ -42,6 +42,22 @@ public class DefaultDesensitizeFunction {
         return desensitizeCommonFunction();
     }
 
+    public static TypeEnumFunction desensitizeIdentityCardFunction() {
+        return desensitizeCommonFunction();
+    }
+
+    public static TypeEnumFunction desensitizeBankCardAccountFunction() {
+        return desensitizeCommonFunction();
+    }
+
+    public static TypeEnumFunction desensitizePassportFunction() {
+        return desensitizeCommonFunction();
+    }
+
+    public static TypeEnumFunction desensitizeOtherFunction() {
+        return desensitizeCommonFunction();
+    }
+
     public static TypeEnumFunction objectEmptyFunction() {
         return (f, o, m, l) -> {
             Object innerObj = f.get(o);
