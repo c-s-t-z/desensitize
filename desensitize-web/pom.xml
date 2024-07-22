@@ -53,7 +53,7 @@
         </dependency>
         <dependency>
             <groupId>com.cstz.logback.desensitize</groupId>
-            <artifactId>desensitize-service</artifactId>
+            <artifactId>desensitize-core</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <dependency>

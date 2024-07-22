@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>com.cstz.logback.desensitize</groupId>
-            <artifactId>desensitize-service</artifactId>
+            <artifactId>desensitize-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.cstz.logback.desensitize</groupId>

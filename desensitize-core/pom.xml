@@ -8,8 +8,8 @@
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>desensitize-service</artifactId>
-    <name>desensitize-service</name>
+    <artifactId>desensitize-core</artifactId>
+    <name>desensitize-core</name>
     <description>脱敏逻辑</description>
     <dependencies>
         <dependency>

@@ -7,7 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="desensitize-start" />
-        <module name="desensitize-service" />
+        <module name="desensitize-core" />
         <module name="desensitize-web" />
       </profile>
     </annotationProcessing>

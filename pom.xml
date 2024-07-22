@@ -19,7 +19,7 @@
     <modules>
         <module>desensitize-start</module>
         <module>desensitize-web</module>
-        <module>desensitize-service</module>
+        <module>desensitize-core</module>
     </modules>
 
     <dependencies>
@@ -91,7 +91,7 @@
             </dependency>
             <dependency>
                 <groupId>com.cstz.logback.desensitize</groupId>
-                <artifactId>desensitize-service</artifactId>
+                <artifactId>desensitize-core</artifactId>
                 <version>1.0.0</version>
             </dependency>
             <dependency>
