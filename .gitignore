@@ -26,3 +26,27 @@ replay_pid*
 
 # Ignore all .idea folders
 .idea/
+
+.idea
+mvnw*
+*.iml
+*.versionsBackup
+
+# Package Files #
+/target/
+.classpath
+.project
+.settings/
+.DS_Store
+/bin/
+*.sublime-*
+/build/
+logs/
+output/
+**/target/
+**/log.txt
+
+#vscode
+.vscode/
+**.factorypath
+

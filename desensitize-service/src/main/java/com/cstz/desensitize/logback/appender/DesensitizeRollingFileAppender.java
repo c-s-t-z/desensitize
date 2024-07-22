@@ -1,19 +1,16 @@
 package com.cstz.desensitize.logback.appender;
 
-import ch.qos.logback.classic.spi.LoggingEvent;
-import ch.qos.logback.core.ConsoleAppender;
-import com.cstz.desensitize.logback.util.DesensitizeUtil;
+import ch.qos.logback.core.rolling.RollingFileAppender;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 /**
  * @Author hhsj
- * @Title: DesensitizeConsoleAppender
+ * @Title: DesensitizeRollingFileAppender
  * @Description:
- * @Date 2024/7/18 17:17
+ * @Date 2024/7/22 10:40
  */
 @Slf4j
-public class DesensitizeConsoleAppender extends ConsoleAppender implements DesensitizeAppender {
+public class DesensitizeRollingFileAppender extends RollingFileAppender implements DesensitizeAppender {
     @Override
     protected void subAppend(Object event) {
         try {
