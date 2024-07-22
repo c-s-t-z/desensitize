@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
  * @Description:
  * @Date 2024/7/18 18:04
  */
-@Target({ElementType.FIELD, ElementType.TYPE})
+@Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DesensitizeAnnotation {
     /**
@@ -49,12 +49,14 @@ public @interface DesensitizeAnnotation {
 
     /**
      * 字符串后面需要保留长度
+     *
      * @return
      */
     int retentionSuffixLength() default CommonConstant.NumberConstant.RETENTION_SUFFIX_LENGTH;
 
     /**
      * 字符串中间脱敏保留长度
+     *
      * @return
      */
     int midAsteriskLength() default CommonConstant.NumberConstant.MID_ASTERISK_LENGTH;
