@@ -44,8 +44,7 @@
 # maven 安装依赖
 
 使用 mvn clean package -Dmaven.test.skip=true 打包
-使用mvn install:install-file -Dfile=youDir/desensitize-service-0.0.1-SNAPSHOT.jar -DgroupId=com.cstz.logback.desensitize -DartifactId=desensitize-service -Dversion=0.0.
-1-SNAPSHOT 安装到你本地的仓库中
+使用mvn install:install-file -Dfile=youDir/desensitize-service-版本号.jar -DgroupId=com.cstz.logback.desensitize -DartifactId=desensitize-service -Dversion=版本号 安装到你本地的仓库中
 然后在你项目中导入该依赖就可以了
 
 # 注意事项

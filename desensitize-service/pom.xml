@@ -5,12 +5,12 @@
     <parent>
         <groupId>com.cstz.logback.desensitize</groupId>
         <artifactId>desensitize</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>desensitize-service</artifactId>
     <name>desensitize-service</name>
-    <description>service 模块，对应 MVC 的 M 概念，存放核心业务逻辑代码</description>
+    <description>脱敏逻辑</description>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
