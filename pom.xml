@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cstz.logback.desensitize</groupId>
     <artifactId>desensitize</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
     <name>desensitize</name>
     <description>日志脱敏</description>
@@ -19,7 +19,7 @@
     <modules>
         <module>desensitize-start</module>
         <module>desensitize-web</module>
-        <module>desensitize-service</module>
+        <module>desensitize-core</module>
     </modules>
 
     <dependencies>
@@ -82,17 +82,17 @@
             <dependency>
                 <groupId>com.cstz.logback.desensitize</groupId>
                 <artifactId>desensitize-start</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>com.cstz.logback.desensitize</groupId>
                 <artifactId>desensitize-web</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>com.cstz.logback.desensitize</groupId>
-                <artifactId>desensitize-service</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <artifactId>desensitize-core</artifactId>
+                <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>

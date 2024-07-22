@@ -5,12 +5,12 @@
     <parent>
         <groupId>com.cstz.logback.desensitize</groupId>
         <artifactId>desensitize</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>desensitize-start</artifactId>
     <name>desensitize-start</name>
-    <description>入口模块，引导工程启动以及基础配置</description>
+    <description>模块</description>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>com.cstz.logback.desensitize</groupId>
-            <artifactId>desensitize-service</artifactId>
+            <artifactId>desensitize-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.cstz.logback.desensitize</groupId>

@@ -53,25 +53,23 @@ public class DesensitizeUtil {
                 continue;
             }
             Map<String, Object> desensitizeMap = new HashMap<>();
-            Object argObj = param;
-            Class<?> argObjClass = argObj.getClass();
+            Class<?> argObjClass = param.getClass();
             String packageName = argObjClass.getPackage().getName();
             if (!StringUtils.startsWithAny(packageName, DesensitizeConfig.getIncludePackages().toArray(new String[0]))) {
                 continue;
             }
             Field[] fields = argObjClass.getDeclaredFields();
             loop.add(argObjClass.hashCode());
-            for (int j = 0, fLen = fields.length; j < fLen; j++) {
-                Field field = fields[j];
-                handler(field, desensitizeMap, argObj, loop);
+            for (Field field : fields) {
+                handler(field, desensitizeMap, param, loop);
             }
             argumentArray[i] = desensitizeMap;
         }
     }
 
     public static void handler(Field field, Map<String, Object> map, Object argObj, Set<Integer> loop) {
-        field.setAccessible(true);
-        DesensitizeAnnotation annotation = getFieldDesensitizeAnnotation(field);
+        setFieldAccess(field);
+        DesensitizeAnnotation annotation = getFieldDesensitizeAnnotation(field, argObj);
         try {
             if (annotation == null) {
                 DesensitizeTypeEnum.UN_DESENSITIZE.getFunction().apply(field, argObj, map, loop);
@@ -117,7 +115,14 @@ public class DesensitizeUtil {
 
     }
 
-    public static DesensitizeAnnotation getFieldDesensitizeAnnotation(Field field) {
+    public static DesensitizeAnnotation getFieldDesensitizeAnnotation(Field field, Object argObj) {
         return field.getAnnotation(DesensitizeAnnotation.class);
+    }
+
+    private static void setFieldAccess(Field field) {
+        if (field.isAccessible()) {
+            return;
+        }
+        field.setAccessible(true);
     }
 }
