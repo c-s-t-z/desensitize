@@ -12,8 +12,6 @@ public interface CommonConstant {
         int RETENTION_SUFFIX_LENGTH = 3;
         int MID_ASTERISK_LENGTH = 4;
 
-        int ASTERISK_NUMBER = 4;
-
         int INT_ZERO = 0;
         int INT_ONE = 1;
     }

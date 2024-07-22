@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 /**
  * @Author hhsj
  * @Title: EnableLogbackDesensitize
- * @Description:
+ * @Description: 未开发完成
  * @Date 2024/7/18 19:08
  */
 @Target(ElementType.TYPE)

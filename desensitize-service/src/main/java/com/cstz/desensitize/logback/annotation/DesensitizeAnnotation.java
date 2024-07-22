@@ -41,13 +41,22 @@ public @interface DesensitizeAnnotation {
 
     /**
      * 如果自定义类型 那么以下属性失效 需要自定义处理
+     * 字符串前面需要保留的长度
      *
      * @return
      */
     int retentionPrefixLength() default CommonConstant.NumberConstant.RETENTION_PREFIX_LENGTH;
 
+    /**
+     * 字符串后面需要保留长度
+     * @return
+     */
     int retentionSuffixLength() default CommonConstant.NumberConstant.RETENTION_SUFFIX_LENGTH;
 
+    /**
+     * 字符串中间脱敏保留长度
+     * @return
+     */
     int midAsteriskLength() default CommonConstant.NumberConstant.MID_ASTERISK_LENGTH;
 
 }

@@ -16,8 +16,6 @@
 
 package com.cstz.logback.desensitize.desensitize.demos.web;
 
-import com.cstz.desensitize.logback.config.DesensitizeConfig;
-import com.cstz.desensitize.logback.config.TestConf;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
-import java.util.Set;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
@@ -53,7 +50,6 @@ public class BasicController {
         user.setAge(666);
         user.setAgeOne(12);
         user.setCString("这是一个可以的面试也是一次大机会");
-        user.setTestConf(new TestConf().setId(1L).setQian(new BigDecimal("1.21")).setEmail("11@qq.com"));
         log.info("zheshi yighe {} user {}", "ceshi", user);
         return user;
     }
