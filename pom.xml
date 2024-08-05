@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cstz.logback.desensitize</groupId>
     <artifactId>desensitize</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
     <name>desensitize</name>
     <description>日志脱敏</description>
@@ -14,6 +14,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.7.6</spring-boot.version>
         <spring-cloud.version>2021.0.5</spring-cloud.version>
+        <desensitize.version>1.0.1</desensitize.version>
     </properties>
 
     <modules>
@@ -82,17 +83,17 @@
             <dependency>
                 <groupId>com.cstz.logback.desensitize</groupId>
                 <artifactId>desensitize-start</artifactId>
-                <version>1.0.0</version>
+                <version>${desensitize.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.cstz.logback.desensitize</groupId>
                 <artifactId>desensitize-web</artifactId>
-                <version>1.0.0</version>
+                <version>${desensitize.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.cstz.logback.desensitize</groupId>
                 <artifactId>desensitize-core</artifactId>
-                <version>1.0.0</version>
+                <version>${desensitize.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>

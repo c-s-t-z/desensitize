@@ -38,6 +38,10 @@ public class DesensitizeConfig {
      */
     private static boolean isCustomHandlerNullValue;
 
+    private static Set<String> includeMarkers;
+
+    private static Set<String> excludeMarkers;
+
     public static Set<String> getIncludePackages() {
         loadConfigComplete();
         return includePackages;
@@ -53,7 +57,54 @@ public class DesensitizeConfig {
         return isCustomHandlerNullValue;
     }
 
+    public static Set<String> getIncludeMarkers() {
+        loadConfigComplete();
+        return includeMarkers;
+    }
+
+    public static Set<String> getExcludeMarkers() {
+        loadConfigComplete();
+        return excludeMarkers;
+    }
+
     public static void loadConfig() {
+        Properties desensitizeProperties = getDesensitizeProperties();
+        loadIncludePackages(desensitizeProperties);
+        loadEnable(desensitizeProperties);
+        loadIsCustomHandlerNullValue(desensitizeProperties);
+        loadIncludeMarkers(desensitizeProperties);
+        loadExcludeMarkers(desensitizeProperties);
+    }
+
+    private static void loadExcludeMarkers(Properties desensitizeProperties) {
+        String excludeMarker = desensitizeProperties.getProperty("desensitize.logback.info.exclude-markers");
+        excludeMarkers = StringUtils.isBlank(excludeMarker) ? new HashSet<>(0) :
+                Arrays.stream(StringUtils.split(excludeMarker, ",")).map(StringUtils::trim).collect(Collectors.toSet());
+    }
+
+    private static void loadIncludeMarkers(Properties desensitizeProperties) {
+        String includeMarker = desensitizeProperties.getProperty("desensitize.logback.info.include-markers");
+        includeMarkers = StringUtils.isBlank(includeMarker) ? new HashSet<>(0) :
+                Arrays.stream(StringUtils.split(includeMarker, ",")).map(StringUtils::trim).collect(Collectors.toSet());
+    }
+
+    private static void loadEnable(Properties desensitizeProperties) {
+        String enable = desensitizeProperties.getProperty("desensitize.logback.enable");
+        enableDesensitize = Boolean.parseBoolean(enable);
+    }
+
+    private static void loadIsCustomHandlerNullValue(Properties desensitizeProperties) {
+        String isCustomHandlerNull = desensitizeProperties.getProperty("desensitize.logback.info.handler-null-value");
+        isCustomHandlerNullValue = Boolean.parseBoolean(isCustomHandlerNull);
+    }
+
+    private static void loadIncludePackages(Properties desensitizeProperties) {
+        String propertyValue = desensitizeProperties.getProperty("desensitize.logback.info.include-packages");
+        includePackages = StringUtils.isBlank(propertyValue) ? new HashSet<>(0) :
+                Arrays.stream(StringUtils.split(propertyValue, ",")).map(StringUtils::trim).collect(Collectors.toSet());
+    }
+
+    private static Properties getDesensitizeProperties() {
         ClassPathResource classPathResource = new ClassPathResource("/desensitize/desensitize-logback.properties");
         Properties properties = new Properties();
         try {
@@ -61,13 +112,7 @@ public class DesensitizeConfig {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        String propertyValue = properties.getProperty("desensitize.logback.info.include-packages");
-        String isCustomHandlerNull = properties.getProperty("desensitize.logback.info.handler-null-value");
-        String enable = properties.getProperty("desensitize.logback.enable");
-        includePackages = StringUtils.isBlank(propertyValue) ? new HashSet<>(0) :
-                Arrays.stream(StringUtils.split(propertyValue, ",")).map(StringUtils::trim).collect(Collectors.toSet());
-        enableDesensitize = Boolean.parseBoolean(enable);
-        isCustomHandlerNullValue = Boolean.parseBoolean(isCustomHandlerNull);
+        return properties;
     }
 
     private static boolean loadConfigComplete() {
