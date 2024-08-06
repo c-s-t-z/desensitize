@@ -26,21 +26,6 @@ public class DesensitizeUtil {
 
     }
 
-    public static boolean isDesensitizeField(Field field) {
-        if (Objects.isNull(field)) {
-            return false;
-        }
-        return Objects.nonNull(field.getAnnotation(DesensitizeAnnotation.class));
-    }
-
-    public static boolean isCustomDesensitizeField(Field field) {
-        if (!isDesensitizeField(field)) {
-            return false;
-        }
-        DesensitizeAnnotation desensitizeMetaInformation = field.getAnnotation(DesensitizeAnnotation.class);
-        return desensitizeMetaInformation.desensitizeType() == DesensitizeTypeEnum.CUSTOM;
-    }
-
     public static void handlerLoggingEvent(LoggingEvent event) {
         Object[] argumentArray = event.getArgumentArray();
         if (argumentArray == null || argumentArray.length == 0) {
