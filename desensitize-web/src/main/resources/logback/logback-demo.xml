@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- https://github.com/spring-projects/spring-boot/blob/v1.4.2.RELEASE/spring-boot/src/main/resources/org/springframework/boot/logging/logback/defaults.xml -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <property name="APP_NAME" value="HtyyApplication"/>
+    <property name="LOG_PATH" value="${user.home}/${APP_NAME}/logs"/>
+    <property name="LOG_FILE" value="${LOG_PATH}/application-demo.log"/>
+    <property name="LOG_FILE_WUXIAO" value="${LOG_PATH}/application-demo_wuxiao.log"/>
+    <!--    <turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">-->
+    <!--        <Marker>CESHI</Marker>-->
+    <!--        <OnMatch>ACCEPT</OnMatch>-->
+    <!--    </turboFilter>-->
+    <appender name="APPLICATION"
+              class="com.cstz.desensitize.logback.appender.DesensitizeRollingFileAppender">
+        <file>${LOG_FILE}</file>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+            <maxFileSize>50MB</maxFileSize>
+            <totalSizeCap>100MB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="APPLICATION_WUXIAO"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--内置filter 注解里面使用的是list集合-->
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
+                <marker>WUXIAO</marker>
+                <marker>WUXIAOONE</marker>
+            </evaluator>
+            <OnMismatch>DENY</OnMismatch>
+            <OnMatch>NEUTRAL</OnMatch>
+        </filter>
+        <file>${LOG_FILE_WUXIAO}</file>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE_WUXIAO}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+            <maxFileSize>50MB</maxFileSize>
+            <totalSizeCap>100MB</totalSizeCap>
+        </rollingPolicy>
+
+    </appender>
+
+    <appender name="CONSOLE" class="com.cstz.desensitize.logback.appender.DesensitizeConsoleAppender">
+        <!--本项目中的filter-->
+        <filter class="com.cstz.desensitize.logback.filter.ExcludeMarkerFilter"/>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="APPLICATION"/>
+        <appender-ref ref="APPLICATION_WUXIAO"/>
+    </root>
+</configuration>

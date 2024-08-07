@@ -1,4 +1,4 @@
-# desensitize
+# desensitize项目说明
 日志脱敏 使用desensitize-core module下的jar包引入项目中 整个项目只是为了开发维护使用 
 
 将整个项目下载到本地 然后执行 mvn 操作
