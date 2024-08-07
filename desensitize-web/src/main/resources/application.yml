@@ -1,0 +1,13 @@
+#---------------端口配置----------
+server:
+    port: 8089
+#-------------------------------log 配置----------------------------------------------------------------
+logging:
+    config: classpath:logback/logback-def.xml
+
+#---------------------------log脱敏配置
+desensitize:
+    logback:
+        packages: com.cstz.logback.desensitize.desensitize.demos.web,com.cstz.desensitize.logback.config
+
+
